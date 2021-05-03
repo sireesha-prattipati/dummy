@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="dummy-project-test-suite.xml" />
+	<munit:test name="dummy-project-test-suite-dummy-projectFlowTest" doc:id="9ea9f9e3-537d-41b2-98a9-69278cfd90d6" description="Test">
+		<munit:execution >
+			<munit:set-null-payload doc:name="Set null payload" doc:id="e4618207-7352-44d6-9b65-96a1a4b279f6" />
+			<flow-ref doc:name="Flow-ref to dummy-projectFlow" doc:id="11a3bb05-ca43-4456-ba65-1e1ba7c360b6" name="dummy-projectFlow"/>
+		</munit:execution>
+		<munit:validation>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="6d12f871-1bc3-4159-9974-24dbfa4353ca" message="Payload cannot be null" expression="#[payload]" is='#[MunitTools::startsWith("Hi")]'/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

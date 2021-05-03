@@ -68,6 +68,26 @@
                     </coverage>
                 </configuration>
             </plugin>
+            <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.6</version>
+                 <extensions>true</extensions>
+                <configuration>
+                    <serverId>nexus</serverId>
+                    <nexusUrl>http://localhost:8091/nexus/</nexusUrl>
+                    <skipStaging>true</skipStaging>
+                </configuration>
+                <executions>
+                       <execution>
+                         <id>default-deploy</id>
+                         <phase>deploy</phase>
+                         <goals>
+                           <goal>deploy</goal>
+                         </goals>
+                       </execution>
+                </executions>   
+            </plugin>
             
         </plugins>
 	</build>
@@ -80,11 +100,7 @@
      </distributionManagement>
 
 	<dependencies>
-	    <dependency>
-             <groupId>org.sonarsource.scanner.maven</groupId>
-             <artifactId>sonar-maven-plugin</artifactId>
-             <version>3.6.1.1688</version>
-        </dependency>
+	    
         <dependency>
             <groupId>org.mule.connectors</groupId>
             <artifactId>mule-http-connector</artifactId>
